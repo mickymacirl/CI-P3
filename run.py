@@ -1,3 +1,4 @@
+import pyfiglet
 import gspread
 from google.oauth2.service_account import Credentials
 from pprint import pprint
@@ -95,7 +96,7 @@ def main():
     new_surplus_data = calculate_surplus_data(sales_data)
     update_worksheet(new_surplus_data, "surplus")
 
-
+print(pyfiglet.figlet_format("Test Ascii", justify="center"))
 print("######################################################################")
 print("##                                                                  ##")
 print("##                                                                  ##")
