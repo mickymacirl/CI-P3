@@ -96,7 +96,7 @@ def main():
     new_surplus_data = calculate_surplus_data(sales_data)
     update_worksheet(new_surplus_data, "surplus")
 
-print(pyfiglet.figlet_format("Test Ascii", justify="center"))
+print(pyfiglet.figlet_format("Test Ascii",font='slant',justify="center"))
 print("######################################################################")
 print("##                                                                  ##")
 print("##                                                                  ##")
