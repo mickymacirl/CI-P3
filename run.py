@@ -1,11 +1,12 @@
 ''' this is '''
 from os import system, name
 import random  # import random
-import pyfiglet  # import pyfiglet for hangman logo
+# import pyfiglet  # import pyfiglet for hangman logo
 import colorama
 from colorama import Fore
 from board import gameState
 from words import words
+from art import logo_display
 from messages import exit_message
 colorama.init(autoreset=True)
 
@@ -30,26 +31,27 @@ def get_random_word(words_list):
     return words_list[list_of_words]
 
 
-def logo_display():
-    """
-    Logo display
-    """
-    headermain = pyfiglet.figlet_format(
-        "HangMan", font="standard", justify="center")
-    print(headermain)
+# def logo_display():
+#    """
+#    Logo display
+#    """
+#    headermain = pyfiglet.figlet_format(
+#        "HangMan", font="standard", justify="center")
+#    print(headermain)
 
-    title = pyfiglet.figlet_format(
-        "Fruit Word Game", font="cybersmall", justify="center")
-    print(title)
-
-    print(Fore.YELLOW + "Fruit Edition(TM)".center(80) + "\n")
+#    title = pyfiglet.figlet_format(
+#        "Fruit Word Game", font="cybersmall", justify="center")
+#    print(title)
+#
+#    print(Fore.YELLOW + "Fruit Edition(TM)".center(80) + "\n")
 
 
 def display_the_board(missing_letter, correct_guess, random_word_from_list):
     ''' this is '''
-    logo_display()
+    # logo_display()
+    print('HANGMAN: The Fruit Edition(TM)')
     word_length = (len(random_word_from_list))
-    print(word_length)
+    # print(word_length)
     print(gameState[len(missing_letter)])
     print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
     print('Letters already used:', end=' ')
