@@ -1,6 +1,7 @@
-''' this is '''
+""" this is """
 from os import system, name
 import random  # import random
+
 # import pyfiglet  # import pyfiglet for hangman logo
 import colorama
 from colorama import Fore
@@ -8,59 +9,52 @@ from board import gameState
 from words import words
 from art import logo_display
 from messages import exit_message
+from messages import game_title
+from messages import game_rules
+from messages import game_pick
+from messages import game_yn
+from messages import game_win
+from messages import game_loss
+
 colorama.init(autoreset=True)
 
 
 # define our clear function
 def clear():
-    ''' this is '''
+    """this is"""
 
     # for windows
-    if name == 'nt':
-        _ = system('cls')
+    if name == "nt":
+        _ = system("cls")
 
     # for mac and linux(here, os.name is 'posix')
     else:
-        _ = system('clear')
+        _ = system("clear")
 
 
 def get_random_word(words_list):
-    ''' this is '''
+    """this is"""
     # This function returns a random string from the passed list of strings.
     list_of_words = random.randint(0, len(words_list) - 1)
     return words_list[list_of_words]
 
 
-# def logo_display():
-#    """
-#    Logo display
-#    """
-#    headermain = pyfiglet.figlet_format(
-#        "HangMan", font="standard", justify="center")
-#    print(headermain)
-
-#    title = pyfiglet.figlet_format(
-#        "Fruit Word Game", font="cybersmall", justify="center")
-#    print(title)
-#
-#    print(Fore.YELLOW + "Fruit Edition(TM)".center(80) + "\n")
-
-
 def display_the_board(missing_letter, correct_guess, random_word_from_list):
-    ''' this is '''
+    """this is"""
     # logo_display()
-    print('HANGMAN: The Fruit Edition(TM)')
-    word_length = (len(random_word_from_list))
+    # print('HANGMAN: The Fruit Game(TM)')
+    print(Fore.YELLOW + "HANGMAN: Fruit Edition(TM)")
+    word_length = len(random_word_from_list)
     # print(word_length)
     print(gameState[len(missing_letter)])
-    print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-    print('Letters already used:', end=' ')
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print("Letters gussed:", end=" ")
     for letter in missing_letter:
-        print(letter, end=' ')
+        print(letter, end=" ")
     print()
-    print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
-    blanks = '_' * len(random_word_from_list)
+    blanks = "~" * len(random_word_from_list)
     # cover blanks _ with correct letter
     for i in range(len(random_word_from_list)):
         if random_word_from_list[i] in correct_guess:
@@ -70,60 +64,50 @@ def display_the_board(missing_letter, correct_guess, random_word_from_list):
     how_many_letters = word_length
     print(f"The word has {how_many_letters} letters:")
     for letter in blanks:  # show the random word from the words list
-        print(letter, end=' ')
-    print('\n')
+        print(letter, end=" ")
+    print("\n")
     print(random_word_from_list)
 
 
 def get_guess(already_guessed):
-    ''' this is '''
+    """this is"""
     # Returns the letter the player entered.
     # This function makes sure the player entered
     # a single letter and not something else.
     while True:
-        print(f"{Fore.YELLOW}\n~~~~~~~~~~~~~~~~~~~~~~~~~")
-        print(f"{Fore.MAGENTA}Pick a letter of a fruit?   ")
-        print(f"{Fore.YELLOW}~~~~~~~~~~~~~~~~~~~~~~~~~")
+        game_pick()
         guess = input()
         guess = guess.lower()
         clear()
         if len(guess) != 1:
             clear()
             logo_display()
-            print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
             check_guess_already = "'{}' isn't acceptable!".format(guess)
             print(check_guess_already)
-            print('Enter a single fruit letter only!')
-            print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+            print("Enter a single fruit letter only!")
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         elif guess in already_guessed:
             logo_display()
-            print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
             check_guess_already = "'{}' is already used!".format(guess)
             print(check_guess_already)
-            print('Choose another letter!')
-            print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-        elif guess not in 'abcdefghijklmnopqrstuvwxyz':
+            print("Choose another letter!")
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        elif guess not in "abcdefghijklmnopqrstuvwxyz":
             clear()
             logo_display()
-            print('~~~~~~~~~~~~~~~~~~~~~~~~')
+            print("~~~~~~~~~~~~~~~~~~~~~~~~")
             check_guess_already = "'{}' isn't a letter!".format(guess)
             print(check_guess_already)
-            print('Enter a LETTER only!')
-            print('~~~~~~~~~~~~~~~~~~~~~~~~')
+            print("Enter a LETTER only!")
+            print("~~~~~~~~~~~~~~~~~~~~~~~~")
         else:
             return guess
 
-#    def exit_message():
-#    ''' exit message '''
-#    print(Fore.YELLOW + "-----------------------------".center(80) + "\n")
-#    print(Fore.YELLOW + "HANGMAN:Fruit Edition(TM)".center(80) + "\n")
-#    print(Fore.YELLOW + "Thank you for playing!".center(80) + "\n")
-#    print(Fore.YELLOW + "Please come back soon!".center(80) + "\n")
-#    print(Fore.YELLOW + "-----------------------------".center(80) + "\n")
-
 
 def play_again():
-    ''' this is '''
+    """this is"""
     # This function returns True if the
     # player wants to play again; otherwise, it returns False.
     # from colorama import Fore, Back, Style
@@ -134,11 +118,11 @@ def play_again():
     # return input().lower().startswith('y')
 
     player_choice = input(
-        f"{Fore.YELLOW}" +
-        f"Do you want to play again? Y or N:{Fore.RESET}\n").lower()
+        f"{Fore.YELLOW}" + f"Do you want to play again? Y or N:{Fore.RESET}\n"
+    ).lower()
     if player_choice == "y":
         clear()
-        main()
+        main_game()
 
     elif player_choice == "n":
         clear()
@@ -149,16 +133,14 @@ def play_again():
     else:
         clear()
         logo_display()
-        print(f"{Fore.YELLOW}--------------------------------------------\n")
-        print(f"{Fore.RED}Sorry, please choose Y to play or N to quit.\n")
-        print(f"{Fore.YELLOW}--------------------------------------------\n")
+        game_yn()
         play_again()
 
 
-def main():
-    ''' this is '''
-    missing_letter = ''
-    correct_guess = ''
+def main_game():
+    """this is"""
+    missing_letter = ""
+    correct_guess = ""
     random_word_from_list = get_random_word(words)
     game_is_over = False
 
@@ -178,54 +160,56 @@ def main():
                     have_all_letters = False
                     break
             if have_all_letters:
+                # print(gameState())
+                # print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+                # print('Letters guessed:', end=' ')
+                # for letter in missing_letter:
+                #     print(letter, end=' ')
                 clear()
-                logo_display()
-                print(f"{Fore.YELLOW}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-                print('You had ' +
-                      str(len(missing_letter)) +
-                      ' missed letters!')
-                print('You had ' +
-                      str(len(correct_guess)) +
-                      ' correct letters!')
-                print(f"{Fore.YELLOW}\nYou have WON")
+                game_win()
+                # print(f"{Fore.YELLOW}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
                 print(
-                    f"{Fore.RED}\nThe word was '" +
-                    random_word_from_list +
-                    "'!")
-                print(f'{Fore.YELLOW}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+                    f"{Fore.YELLOW}"
+                    + str(len(missing_letter))
+                    + " missed letters!"
+                )
+                print(
+                    f"{Fore.YELLOW}"
+                    + str(len(correct_guess))
+                    + " correct letters!"
+                )
+                print(f"{Fore.RED}\nGuessed '" + random_word_from_list + "'!")
+                print("\n")
                 game_is_over = True
         else:
             missing_letter = missing_letter + guess
 
-        # Check if player has guessed too many times and lost.
+            # Check if player has guessed too many times and lost.
             if len(missing_letter) == len(gameState) - 1:
                 clear()
                 logo_display()
-                print(f"{Fore.RED}You have run out of guesses!\n")
-                print(f'{Fore.RED}You had ' +
-                      str(len(missing_letter)) + ' missed!')
-                print(f'{Fore.RED}Missed Letters:', end=' ')
+                game_loss()
+                print(f"{Fore.RED}" + str(len(missing_letter)) + " missed!")
+                print(f"{Fore.RED}Missed Letters:", end=" ")
                 for letter in missing_letter:
-                    print(letter, end=' ')
-                print('')
-                print(f"{Fore.RED}\nYou had " +
-                      str(len(correct_guess)) + ' correct!')
-                print(f"{Fore.RED}Correct Letters:", end=' ')
+                    print(letter, end=" ")
+                print("")
+                print(f"{Fore.RED}\n" + str(len(correct_guess)) + " correct!")
+                print(f"{Fore.RED}Correct Letters:", end=" ")
                 for letter in correct_guess:
-                    print(letter, end=' ')
-                print('')
-                print(
-                    f"{Fore.RED}\nThe word was \"" +
-                    random_word_from_list +
-                    '"\n')
+                    print(letter, end=" ")
+                print("")
+                print(f'{Fore.RED}\nThe word was "' ' \
+                    ' + random_word_from_list + '"\n')
                 game_is_over = True
 
-    # Ask the player if they want to play again (but only if the game is done).
+        # Ask the player if they want to play again
+        # (but only if the game is done).
         if game_is_over:
             if play_again():
                 clear()
-                missing_letter = ''
-                correct_guess = ''
+                missing_letter = ""
+                correct_guess = ""
                 game_is_over = False
                 random_word_from_list = get_random_word(words)
             else:
@@ -233,15 +217,15 @@ def main():
 
 
 def instructions():
-    ''' this is '''
+    """this is"""
     logo_display()
-    print("These are the instructions")
+    game_rules()
     player_choice = input(
-        f"{Fore.YELLOW}" +
-        f"Do you want to play? Y or N:{Fore.RESET}\n").lower()
+        f"{Fore.YELLOW}" + f"Do you want to play? Y or N:{Fore.RESET}\n"
+    ).lower()
     if player_choice == "y":
         clear()
-        main()
+        main_game()
 
     elif player_choice == "n":
         clear()
@@ -252,14 +236,12 @@ def instructions():
     else:
         clear()
         logo_display()
-        print(f"{Fore.YELLOW}--------------------------------------------\n")
-        print(f"{Fore.RED}Please choose Y to play or N to quit.\n")
-        print(f"{Fore.YELLOW}--------------------------------------------\n")
+        game_yn()
         see_instructions()
 
 
 def see_instructions():
-    ''' This is '''
+    """This is"""
     # This function returns True if the
     # player wants to play again; otherwise, it returns False.
     # from colorama import Fore, Back, Style
@@ -268,25 +250,21 @@ def see_instructions():
     # print('Do you want to play again? (yes or no)')
     # print('--------------------------------------')
     # return input().lower().startswith('y')
+    clear()
     logo_display()
     print("Welcome to Hangman, the Fruit Edition(TM)\n")
-    print(
-        'The origins of the game Hangman are unclear but could stretch back to the 1890s.\n'
-        'Players guess letters of an unrevealed word and then draw an arm, leg,\n'
-        'head or torso of a stick figure hanging from gallows for every \n'
-        'incorrect guess.\n\nIf players draw all body '
-        'parts and the word still '
-        'hasnt\nbeen spelled out, the players lose.\n')
+    game_title()
     player_choice = input(
-        f"{Fore.YELLOW}" +
-        f"Do you want to see instructions? Y or N:{Fore.RESET}\n").lower()
+        f"{Fore.YELLOW}" + f"Do you want to see instructions? ' \
+            'Y or N:{Fore.RESET}\n"
+    ).lower()
     if player_choice == "y":
         clear()
         instructions()
 
     elif player_choice == "n":
         clear()
-        main()
+        main_game()
 
     else:
         clear()
