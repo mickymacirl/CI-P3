@@ -1,6 +1,8 @@
 """ this is """
 from os import system, name
 import random  # import random
+# import sys
+# from termcolor import colored, cprint
 
 # import pyfiglet  # import pyfiglet for hangman logo
 import colorama
@@ -184,12 +186,15 @@ def main_game():
                     + str(len(correct_guess))
                     + " correct letters!".center(10)
                 )
-                print_word = str(random_word_from_list)
-                print(f"{Fore.RED}The word was: ".center(30) + print_word)
-                print(f"{Fore.RED}".center(30) + print_word)
+                # print_word = str(random_word_from_list)
+                print(f"{Fore.RED}The word was: ".center(82))
+                text_word = random_word_from_list
+                i = text_word.center(80, " ")
+                print(i)
+                # print(f"{Fore.RED}".center(30) + print_word)
                 # print(f"{Fore.RED}\nWord was '" + random_word_from_list + "'!")
                 # print(f"{Fore.RED}\n".center(10)"Word was " + print_word + "'!".center(80))
-                print()
+                print(f"{Fore.YELLOW}+-------------------------+".center(83))
                 print("\n")
                 game_is_over = True
         else:
@@ -200,21 +205,44 @@ def main_game():
                 clear()
                 logo_display()
                 game_loss()
-                total_missed = str(len(missing_letter))
-                print(f"{Fore.RED}Total missed was " + total_missed)
+                print(
+                    f"{Fore.YELLOW}".center(36)
+                    + str(len(missing_letter))
+                    + " missed letters!".center(10)
+                )
+                print(
+                    f"{Fore.YELLOW}".center(36)
+                    + str(len(correct_guess))
+                    + " correct letters!".center(10)
+                )
+                # print_word = str(random_word_from_list)
+                print(f"{Fore.RED}The word was: ".center(82))
+                text_word = random_word_from_list
+                i = text_word.center(80, " ")
+                print(i)
+                # print(f"{Fore.RED}".center(30) + print_word)
+                # print(f"{Fore.RED}\nWord was '" + random_word_from_list + "'!")
+                # print(f"{Fore.RED}\n".center(10)"Word was " + print_word + "'!".center(80))
+                print(f"{Fore.YELLOW}+-------------------------+".center(83))
+                print("\n")
+                game_is_over = True
+                # logo_display()
+                # game_loss()
+                # total_missed = str(len(missing_letter))
+                # print(f"{Fore.RED}Total missed was " + total_missed)
                 # print(f"{Fore.RED}"total_missed + " missed!")
-                print(f"{Fore.RED}Missed Letters:", end=" ")
-                for letter in missing_letter:
-                    print(letter, end=" ")
-                print("")
-                total_correct = str(len(correct_guess))
-                print(f"{Fore.RED}Total correct was " + total_correct)
-                # print(f"{Fore.RED}\n" + str(len(correct_guess)) + " correct!")
-                print(f"{Fore.RED}Correct Letters:", end=" ")
-                for letter in correct_guess:
-                    print(letter, end=" ")
+                # print(f"{Fore.RED}Missed Letters:", end=" ")
+                # for letter in missing_letter:
+                #    print(letter, end=" ")
                 # print("")
-                print(f'{Fore.RED}\nThe word  "' + random_word_from_list + '"\n')
+                # total_correct = str(len(correct_guess))
+                # print(f"{Fore.RED}Total correct was " + total_correct)
+                # print(f"{Fore.RED}\n" + str(len(correct_guess)) + " correct!")
+                # print(f"{Fore.RED}Correct Letters:", end=" ")
+                # for letter in correct_guess:
+                #     print(letter, end=" ")
+                # print("")
+                # print(f'{Fore.RED}\nThe word  "' + random_word_from_list + '"\n')
                 game_is_over = True
 
         # Ask the player if they want to play again
