@@ -46,13 +46,16 @@ def display_the_board(missing_letter, correct_guess, random_word_from_list):
     print(Fore.YELLOW + "HANGMAN: Fruit Edition(TM)")
     word_length = len(random_word_from_list)
     # print(word_length)
+    # number_of_goes = len(random_word_from_list)
+    number_of_goes1 = 8
+    print(number_of_goes1)
     print(gameState[len(missing_letter)])
-    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-    print("Letters gussed:", end=" ")
+    print("~-----------------------------------------~")
+    print("Letters guessed:", end=" ")
     for letter in missing_letter:
         print(letter, end=" ")
     print()
-    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print("~-----------------------------------------~")
 
     blanks = "~" * len(random_word_from_list)
     # cover blanks _ with correct letter
@@ -82,27 +85,30 @@ def get_guess(already_guessed):
         if len(guess) != 1:
             clear()
             logo_display()
-            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+            print("~------------------------------------~")
             check_guess_already = "'{}' isn't acceptable!".format(guess)
             print(check_guess_already)
             print("Enter a single fruit letter only!")
-            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+            print("~------------------------------------~")
         elif guess in already_guessed:
             logo_display()
-            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+            print("~------------------------------------~")
             check_guess_already = "'{}' is already used!".format(guess)
             print(check_guess_already)
             print("Choose another letter!")
-            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+            print("~------------------------------------~")
         elif guess not in "abcdefghijklmnopqrstuvwxyz":
             clear()
             logo_display()
-            print("~~~~~~~~~~~~~~~~~~~~~~~~")
+            print("~------------------------------------~")
             check_guess_already = "'{}' isn't a letter!".format(guess)
             print(check_guess_already)
             print("Enter a LETTER only!")
-            print("~~~~~~~~~~~~~~~~~~~~~~~~")
+            print("~------------------------------------~")
         else:
+            # number_of_goes = 8
+            # number_of_goes = number_of_goes - 1
+            # print(number_of_goes)
             return guess
 
 
@@ -169,16 +175,21 @@ def main_game():
                 game_win()
                 # print(f"{Fore.YELLOW}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
                 print(
-                    f"{Fore.YELLOW}"
+                    f"{Fore.YELLOW}".center(36)
                     + str(len(missing_letter))
-                    + " missed letters!"
+                    + " missed letters!".center(10)
                 )
                 print(
-                    f"{Fore.YELLOW}"
+                    f"{Fore.YELLOW}".center(36)
                     + str(len(correct_guess))
-                    + " correct letters!"
+                    + " correct letters!".center(10)
                 )
-                print(f"{Fore.RED}\nGuessed '" + random_word_from_list + "'!")
+                print_word = str(random_word_from_list)
+                print(f"{Fore.RED}The word was: ".center(30) + print_word)
+                print(f"{Fore.RED}".center(30) + print_word)
+                # print(f"{Fore.RED}\nWord was '" + random_word_from_list + "'!")
+                # print(f"{Fore.RED}\n".center(10)"Word was " + print_word + "'!".center(80))
+                print()
                 print("\n")
                 game_is_over = True
         else:
@@ -189,18 +200,21 @@ def main_game():
                 clear()
                 logo_display()
                 game_loss()
-                print(f"{Fore.RED}" + str(len(missing_letter)) + " missed!")
+                total_missed = str(len(missing_letter))
+                print(f"{Fore.RED}Total missed was " + total_missed)
+                # print(f"{Fore.RED}"total_missed + " missed!")
                 print(f"{Fore.RED}Missed Letters:", end=" ")
                 for letter in missing_letter:
                     print(letter, end=" ")
                 print("")
-                print(f"{Fore.RED}\n" + str(len(correct_guess)) + " correct!")
+                total_correct = str(len(correct_guess))
+                print(f"{Fore.RED}Total correct was " + total_correct)
+                # print(f"{Fore.RED}\n" + str(len(correct_guess)) + " correct!")
                 print(f"{Fore.RED}Correct Letters:", end=" ")
                 for letter in correct_guess:
                     print(letter, end=" ")
-                print("")
-                print(f'{Fore.RED}\nThe word was "' ' \
-                    ' + random_word_from_list + '"\n')
+                # print("")
+                print(f'{Fore.RED}\nThe word  "' + random_word_from_list + '"\n')
                 game_is_over = True
 
         # Ask the player if they want to play again
@@ -218,6 +232,7 @@ def main_game():
 
 def instructions():
     """this is"""
+    clear()
     logo_display()
     game_rules()
     player_choice = input(
@@ -250,28 +265,27 @@ def see_instructions():
     # print('Do you want to play again? (yes or no)')
     # print('--------------------------------------')
     # return input().lower().startswith('y')
-    clear()
+    # clear()
     logo_display()
     print("Welcome to Hangman, the Fruit Edition(TM)\n")
     game_title()
     player_choice = input(
-        f"{Fore.YELLOW}" + f"Do you want to see instructions? ' \
-            'Y or N:{Fore.RESET}\n"
+        f"{Fore.YELLOW}" + "Do you want read instructions? Y or N:\n"
     ).lower()
     if player_choice == "y":
-        clear()
+        # clear()
         instructions()
 
     elif player_choice == "n":
-        clear()
+        # clear()
         main_game()
 
     else:
-        clear()
+        # clear()
         logo_display()
-        print(f"{Fore.YELLOW}---------------------------------------\n")
+        print(f"{Fore.YELLOW}~-------------------------------------~\n")
         print(f"{Fore.RED}Please choose Y to read or N to play.\n")
-        print(f"{Fore.YELLOW}---------------------------------------\n")
+        print(f"{Fore.YELLOW}~-------------------------------------~\n")
         see_instructions()
 
 

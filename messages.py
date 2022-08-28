@@ -1,16 +1,17 @@
 ''' Messages '''
 import colorama
 from colorama import Fore
+from run import logo_display
 colorama.init(autoreset=True)
 
 
 def exit_message():
     ''' exit message '''
-    print(Fore.YELLOW + "-----------------------------".center(80) + "\n")
-    print(Fore.YELLOW + "HANGMAN:Fruit Edition(TM)".center(80) + "\n")
-    print(Fore.YELLOW + "Thank you for playing!".center(80) + "\n")
-    print(Fore.YELLOW + "Please come back soon!".center(80) + "\n")
-    print(Fore.YELLOW + "-----------------------------".center(80) + "\n")
+    print(Fore.YELLOW + "~---------------------------~".center(80))
+    print(Fore.YELLOW + "HANGMAN:Fruit Edition(TM)".center(80))
+    print(Fore.YELLOW + "Thank you for playing!".center(80))
+    print(Fore.YELLOW + "Please come back soon!".center(80))
+    print(Fore.YELLOW + "~---------------------------~")
 
 
 def game_title():
@@ -28,9 +29,9 @@ def game_rules():
 
 
 def game_pick():
-    print(f"{Fore.YELLOW}\n~~~~~~~~~~~~~~~~~~~~~~~~~")
-    print(f"{Fore.MAGENTA}Pick a letter of a fruit yesy?   ")
-    print(f"{Fore.YELLOW}~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print(f"{Fore.YELLOW}\n~------------------------~")
+    print(f"{Fore.MAGENTA}Pick a letter of a fruit?   ")
+    print(f"{Fore.YELLOW}~------------------------~")
 
 
 def game_yn():
@@ -40,18 +41,20 @@ def game_yn():
 
 
 def game_win():
-    print(Fore.YELLOW + "-----------------------------".center(80) + "\n")
-    print(Fore.YELLOW + "HANGMAN:Fruit Edition(TM)".center(80) + "\n")
-    print(Fore.YELLOW + "\n")
-    print(Fore.MAGENTA + "YOU HAVE WON!".center(80) + "\n")
-    print(Fore.YELLOW + "\n")
-    print(Fore.YELLOW + "-----------------------------".center(80) + "\n")
+    logo_display()
+    print(Fore.YELLOW + "---------------------------".center(80))
+    # print(Fore.YELLOW + "HANGMAN:Fruit Edition(TM)")
+    # print(Fore.YELLOW + "\n")
+    print(Fore.MAGENTA + "YOU HAVE WON!".center(80))
+    # print(Fore.YELLOW + "\n")
+    print(Fore.YELLOW + "---------------------------".center(80))
 
 
 def game_loss():
-    print(Fore.YELLOW + "-----------------------------".center(80) + "\n")
-    print(Fore.YELLOW + "HANGMAN:Fruit Edition(TM)".center(80) + "\n")
-    print(Fore.YELLOW + "\n")
-    print(Fore.RED + "YOU HAVE LOST!".center(80) + "\n")
-    print(Fore.YELLOW + "\n")
-    print(Fore.YELLOW + "-----------------------------".center(80) + "\n")
+    logo_display()
+    print(Fore.YELLOW + "---------------------------".center(80))
+    # print(Fore.YELLOW + "HANGMAN:Fruit Edition(TM)")
+    # print(Fore.YELLOW + "\n")
+    print(Fore.RED + "YOU HAVE LOST!".center(80))
+    # print(Fore.YELLOW + "\n")
+    print(Fore.YELLOW + "---------------------------".center(80))
