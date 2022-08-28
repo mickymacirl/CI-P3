@@ -4,7 +4,7 @@ from os import system, name
 import colorama
 from colorama import Fore
 from termcolor import colored
-from run import logo_display
+from art import logo_display
 colorama.init(autoreset=True)
 
 
