@@ -265,7 +265,7 @@ def see_instructions():
     # print('Do you want to play again? (yes or no)')
     # print('--------------------------------------')
     # return input().lower().startswith('y')
-    # clear()
+    clear()
     logo_display()
     print("Welcome to Hangman, the Fruit Edition(TM)\n")
     game_title()
@@ -281,11 +281,11 @@ def see_instructions():
         main_game()
 
     else:
-        # clear()
+        clear()
         logo_display()
-        print(f"{Fore.YELLOW}~-------------------------------------~\n")
-        print(f"{Fore.RED}Please choose Y to read or N to play.\n")
-        print(f"{Fore.YELLOW}~-------------------------------------~\n")
+        # print(f"{Fore.YELLOW}~-------------------------------------~\n")
+        # print(f"{Fore.RED}Please choose Y to read or N to play.\n")
+        # print(f"{Fore.YELLOW}~-------------------------------------~\n")
         see_instructions()
 
 
