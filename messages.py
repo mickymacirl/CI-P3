@@ -22,7 +22,7 @@ def clear():
 
 
 def exit_message():
-    """exit message"""
+    """This function is used to display exit message"""
     print(Fore.YELLOW + "~---------------------------~".center(80))
     print(Fore.YELLOW + "HANGMAN:Fruit Edition(TM)\n".center(80))
     print(Fore.YELLOW + "Thank you for playing!\n".center(80))
@@ -31,6 +31,7 @@ def exit_message():
 
 
 def game_title():
+    """ This function has the text for the game title"""
     print(
         "The origins of the game Hangman are unclear but could stretch back\n"
         "to the 1890s.Players guess letters of an unrevealed word and then \n"
@@ -42,43 +43,39 @@ def game_title():
 
 
 def game_rules():
+    """ This function displays the gamer instuctions """
     print("These are the instructions test")
 
 
 def game_pick():
+    """ This function displays the pick a letter of a fruit question"""
     print(f"{Fore.YELLOW}\n~-----------------------~")
     print(f"{Fore.MAGENTA}Pick a letter of a fruit?   ")
     print(f"{Fore.YELLOW}~-----------------------~")
 
 
 def game_yn():
+    """ This fuction displays the yes or no option """
     print(f"{Fore.YELLOW}~----------------------------------~\n".center(85))
     print(f"{Fore.RED}Please choose Y to play or N to quit.\n".center(86))
     print(f"{Fore.YELLOW}~----------------------------------~\n".center(85))
 
 
 def game_win():
+    """ This function displays the WIN page """
     clear()
     logo_display()
     print(Fore.YELLOW + "+-------------------------+".center(80))
-    # print(Fore.YELLOW + "HANGMAN:Fruit Edition(TM)")
-    # print(Fore.YELLOW + "\n")
-    # print(Fore.MAGENTA + "YOU HAVE WON!".center(80))
     text = colored("WON!".center(80), "magenta", attrs=["reverse", "blink"])
     print(text)
-    # print(Fore.YELLOW + "\n")
     print(Fore.YELLOW + "+-------------------------+".center(80))
 
 
 def game_loss():
+    """ This function displays the LOST page """
     clear()
     logo_display()
     print(Fore.YELLOW + "+-------------------------+".center(80))
-    # print(Fore.YELLOW + "HANGMAN:Fruit Edition(TM)")
-    # print(Fore.YELLOW + "\n")
     text = colored("LOST!".center(80), "red", attrs=["reverse", "blink"])
     print(text)
-    # cprint('Hello, World!', 'green', 'on_red')
-    # print(Fore.RED + "YOU HAVE LOST!".center(80))
-    # print(Fore.YELLOW + "\n")
     print(Fore.YELLOW + "+-------------------------+".center(80))

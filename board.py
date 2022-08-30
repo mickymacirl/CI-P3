@@ -1,5 +1,6 @@
-# import colorama
-# from colorama import Fore
+""" This is the styling for the game board
+    This function displays the game board with 8 tries.
+"""
 
 gameState = [
     """ +->------+
