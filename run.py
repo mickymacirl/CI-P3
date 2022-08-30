@@ -61,7 +61,7 @@ def display_the_board(missing_letter, correct_guess, random_word_from_list):
     # cover blanks ~ with correct letter
     for i in range(len(random_word_from_list)):
         if random_word_from_list[i] in correct_guess:
-            empty = empty[:i] + random_word_from_list[i] + empty[i + 1 :]
+            empty = empty[:i] + random_word_from_list[i] + empty[i + 1:]
 
     word_length = len(random_word_from_list)
     print(f"The word has {word_length} letters:")
@@ -141,7 +141,6 @@ def main_game():
     missing_letter = ""
     correct_guess = ""
     random_word_from_list = get_random_word(words)
-    guesses_left = 8
     game_is_over = False
 
     while True:
@@ -152,14 +151,14 @@ def main_game():
 
         if guessed in random_word_from_list:
             correct_guess = correct_guess + guessed
-            guesses_left = guesses_left - 1
-
             # Check if the player has won.
             have_all_letters = True
+            
             for i in range(len(random_word_from_list)):
                 if random_word_from_list[i] not in correct_guess:
                     have_all_letters = False
                     break
+
             if have_all_letters:
                 clear()
                 game_win()
