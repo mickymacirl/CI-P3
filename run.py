@@ -254,7 +254,7 @@ def instructions():
     else call instructions again
     """
     clear()
-    print(Fore.RESET)  # reset color
+    # print(Fore.RESET)  # reset color
     # delete_last_line()
     logo_display()
     game_rules()
