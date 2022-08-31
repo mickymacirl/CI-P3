@@ -1,6 +1,7 @@
 """ this is """
 from os import system, name
 import random  # import random
+import time
 
 import colorama  # import colorama for colors
 from colorama import Fore
@@ -12,8 +13,10 @@ from messages import game_title  # import game_title from messages.py
 from messages import game_rules  # import game_rules from messages.py
 from messages import game_pick  # import game_rules from messages.py
 from messages import game_yn  # import game_yn from messages.py
+from messages import instructions_yn  # import instructions from messages.py
 from messages import game_win  # import game_win from messages.py
 from messages import game_loss  # import game_loss from messages.py
+
 
 colorama.init(autoreset=True)  # auto reset colorama
 
@@ -42,6 +45,7 @@ def get_random_word(words_list):
 
 
 def display_the_board(missing_letter, correct_guess, random_word_from_list):
+    # pass
     """This function builds the game board from board.py and displays the
     length of the missing letter variable"""
     print(Fore.YELLOW + "HANGMAN: Fruit Edition(TM)")
@@ -79,6 +83,7 @@ def get_guess(already_guessed):
     must be equal to letter
     must not equal an already guessed letter"""
     while True:
+        alphabet = "abcdefghijklmnopqrstuvwxyz"
         game_pick()
         guessed = input()  # Get player guess
         guessed = guessed.lower()  # Force guessed lowercase
@@ -93,7 +98,7 @@ def get_guess(already_guessed):
             print(i)
             print(f"{Fore.RED}Enter a single fruit letter only!".center(80))
             print(f"{Fore.YELLOW}~-------------------------------~".center(80))
-        elif guessed not in "abcdefghijklmnopqrstuvwxyz":
+        elif guessed not in alphabet:
             clear()
             logo_display()
             print(f"{Fore.YELLOW}~------------------------------~".center(80))
@@ -134,7 +139,7 @@ def play_again():
         clear()
         logo_display()
         game_yn()
-        play_again()
+        # play_again()
 
 
 def main_game():
@@ -142,16 +147,16 @@ def main_game():
     the main game board asking for a letter guess
     If win, display details, else add missed guess to guessed
     and if missing letters is 8, display game lose"""
+    random_word_from_list = get_random_word(words)
     missing_letter = ""
     correct_guess = ""
-    random_word_from_list = get_random_word(words)
     game_is_over = False
 
     while True:
         display_the_board(missing_letter, correct_guess, random_word_from_list)
 
         guessed = get_guess(missing_letter + correct_guess)
-        # If the player has found all letters
+        # If the player has guessed all letters
         if guessed in random_word_from_list:
             correct_guess = correct_guess + guessed
             have_all_letters = True
@@ -210,6 +215,7 @@ def main_game():
 
         # Ask player if they want to play the game again
         # if the game is over. Reset board and null variables
+        # and get new word
         if game_is_over:
             if play_again():
                 clear()
@@ -231,14 +237,14 @@ def instructions():
     clear()
     logo_display()
     game_rules()
-    player_choice = input(
+    user_input = input(
         f"{Fore.YELLOW}" + f"Do you want to play? Y or N:{Fore.RESET}\n"
     ).lower()
-    if player_choice == "y":
+    if user_input == "y":
         clear()
         main_game()
 
-    elif player_choice == "n":
+    elif user_input == "n":
         clear()
         logo_display()
         exit_message()
@@ -259,20 +265,30 @@ def see_instructions():
     logo_display()
     print("Welcome to Hangman, the Fruit Edition(TM)\n")
     game_title()
-    player_choice = input(
+    user_input = input(
         f"{Fore.YELLOW}" + "Do you want read instructions? Y or N:\n"
     ).lower()
-    if player_choice == "y":
+    if user_input == "y":
         clear()
         instructions()
 
-    elif player_choice == "n":
+    elif user_input == "n":
         clear()
         main_game()
+
+    elif user_input == "q":
+        clear()
+        logo_display()
+        exit_message()
+        exit()
 
     else:
         clear()
         logo_display()
+        # print('Please choose either a Y or N')
+        instructions_yn()
+        # print()
+        time.sleep(3)
         see_instructions()
 
 

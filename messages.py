@@ -61,6 +61,15 @@ def game_yn():
     print(f"{Fore.YELLOW}~----------------------------------~\n".center(85))
 
 
+def instructions_yn():
+    """ This fuction displays the yes or no option to view
+    instructions"""
+    print(f"{Fore.YELLOW}~----------------------------------~\n".center(85))
+    print(f"{Fore.RED}Please choose Y to read or N to play\n".center(86))
+    print(f"{Fore.RED}or Q to quit.\n".center(86))
+    print(f"{Fore.YELLOW}~----------------------------------~\n".center(85))
+
+
 def game_win():
     """ This function displays the WIN page """
     clear()
