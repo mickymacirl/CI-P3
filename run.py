@@ -1,11 +1,13 @@
 """ this is """
 from os import system, name
+import sys
 import random  # import random
 import time
 
-import colorama  # import colorama for colors
+# import colorama  # import colorama for colors
+from colorama import init
 from colorama import Fore
-from board import gameState  # import gameState from board.py
+from board import board  # import board from board.py
 from words import words  # import words from words.py
 from art import logo_display  # import logo_display from art.py
 from messages import exit_message  # import exit_message from message.py
@@ -18,7 +20,7 @@ from messages import game_win  # import game_win from messages.py
 from messages import game_loss  # import game_loss from messages.py
 
 
-colorama.init(autoreset=True)  # auto reset colorama
+init(autoreset=True)  # auto reset colorama
 
 
 # define our clear function
@@ -49,7 +51,7 @@ def display_the_board(missing_letter, correct_guess, random_word_from_list):
     """This function builds the game board from board.py and displays the
     length of the missing letter variable"""
     print(Fore.YELLOW + "HANGMAN: Fruit Edition(TM)")
-    print(gameState[len(missing_letter)])
+    print(board[len(missing_letter)])
     print(f"{Fore.YELLOW}~-----------------------------------------~")
     print("Letters tried:", end=" ")
     for letter in missing_letter:
@@ -139,12 +141,12 @@ def play_again():
         clear()
         logo_display()
         game_yn()
-        # play_again()
+        play_again()
 
 
 def main_game():
     """This function resets variables for game and displays
-    the main game board asking for a letter guess
+    the main game board passing letter guess
     If win, display details, else add missed guess to guessed
     and if missing letters is 8, display game lose"""
     random_word_from_list = get_random_word(words)
@@ -160,10 +162,17 @@ def main_game():
         if guessed in random_word_from_list:
             correct_guess = correct_guess + guessed
             have_all_letters = True
-            for i in range(len(random_word_from_list)):
-                if random_word_from_list[i] not in correct_guess:
+#            for i in range(len(random_word_from_list)):
+#                if random_word_from_list[i] not in correct_guess:
+#                    have_all_letters = False
+#                    break
+            for k_r, v_r in enumerate(random_word_from_list):
+                if v_r not in correct_guess:
+                    print(k_r)  # print then clear
+                    clear()
                     have_all_letters = False
                     break
+
             # Display win message to player with details
             if have_all_letters:
                 clear()
@@ -191,7 +200,7 @@ def main_game():
 
             # If player hasn't guessed within 8 guesses,
             # as listed in board.py, will display loss message
-            if len(missing_letter) == len(gameState) - 1:
+            if len(missing_letter) == len(board) - 1:
                 clear()
                 logo_display()
                 game_loss()
@@ -227,24 +236,42 @@ def main_game():
                 break
 
 
+def delete_last_line(one_line=1):
+    up_one_line = '\x1b[1A'
+    delete_line = '\x1b[2K'
+    # one_line = []
+    for _ in range(one_line):
+        sys.stdout.write(up_one_line)
+        sys.stdout.write(delete_line)
+
+
 def instructions():
     """This function askes the player if they want to play the game
     after reading the instructions
     If they choose y, clear screen and call main_game
     If they choose n, clear the screen and display exit message
+    If they choose q, clear the screen and display exit message
     else call instructions again
     """
     clear()
+    print(Fore.RESET)  # reset color
+    # delete_last_line()
     logo_display()
     game_rules()
     user_input = input(
-        f"{Fore.YELLOW}" + f"Do you want to play? Y or N:{Fore.RESET}\n"
+        f"{Fore.YELLOW}" + f"Do you want to play? Y, N or Q:{Fore.RESET}\n"
     ).lower()
     if user_input == "y":
         clear()
         main_game()
 
     elif user_input == "n":
+        clear()
+        logo_display()
+        exit_message()
+        exit()
+
+    elif user_input == "q":
         clear()
         logo_display()
         exit_message()
@@ -260,13 +287,13 @@ def instructions():
 def see_instructions():
     """This fuction asks the player if they want to read the instructions
     Chooosing N will start the game
-    If not y or n, display instructions"""
+    If not y, n, q display instructions"""
     clear()
     logo_display()
     print("Welcome to Hangman, the Fruit Edition(TM)\n")
     game_title()
     user_input = input(
-        f"{Fore.YELLOW}" + "Do you want read instructions? Y or N:\n"
+        f"{Fore.YELLOW}" + "Do you want to read instructions? Y, N or Q:\n"
     ).lower()
     if user_input == "y":
         clear()
@@ -294,3 +321,6 @@ def see_instructions():
 
 clear()
 see_instructions()
+
+if __name__ == "__main__":
+    main_game()

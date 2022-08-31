@@ -1,6 +1,6 @@
 """ This is the fuction that displays the hangman logo """
 import pyfiglet  # import pyfiglet for hangman logo
-import colorama
+import colorama  # import colorama to color text
 from colorama import Fore
 
 colorama.init(autoreset=True)

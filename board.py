@@ -2,7 +2,7 @@
     This function displays the game board with 8 tries.
 """
 
-gameState = [
+board = [
     """ +->------+
  |       <|     +---------+
           |>    |    8    |

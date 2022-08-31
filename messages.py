@@ -34,9 +34,9 @@ def game_title():
     """ This function has the text for the game title"""
     print(
         "The origins of the game Hangman are unclear but could stretch back\n"
-        "to the 1890s.Players guess letters of an unrevealed word and then \n"
+        "to the 1890s. Players guess letters of an unrevealed word and then \n"
         "draw an arm, leg, head or torso of a stick figure hanging from \n"
-        "gallows for every  incorrect guess.\n\nIf players draw all body "
+        "gallows for every incorrect guess.\n\nIf players draw all body "
         "parts and the word still "
         "hasnt\nbeen spelled out, the players lose.\n"
     )
@@ -44,7 +44,14 @@ def game_title():
 
 def game_rules():
     """ This function displays the gamer instuctions """
-    print("These are the instructions test")
+    print(f"{Fore.YELLOW}HANGMAN: The Fruit Edition(TM) Game Instructions")
+    print()
+    print("The hangman consists of a head, a body, 2 arms, 2 legs, and ears.")
+    print("If you correctly gues the puzzle or fill in all of the letters")
+    print("before the hangman is complete, you WIN!")
+    print()
+    print("You have 8 chances to guess the correct fruit letters!")
+    print()
 
 
 def game_pick():
