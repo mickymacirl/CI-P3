@@ -34,7 +34,7 @@ def clear():
 
 def get_random_word(words_list):
     """Get Random Word Function
-    This function uses the random import to fetch a random word from the
+    This function uses the random import to get a random word from the
     words.py file.
     """
     list_of_words = random.randint(0, len(words_list) - 1)
@@ -67,7 +67,7 @@ def display_the_board(missing_letter, correct_guess, random_word_from_list):
     word_length = len(random_word_from_list)
     print(f"The word has {word_length} letters:")
     for letter in empty:
-        # Display random word from the word list
+        # Display random word from the words
         print(letter, end=" ")
     print("\n")
     print(random_word_from_list)
@@ -151,10 +151,9 @@ def main_game():
         display_the_board(missing_letter, correct_guess, random_word_from_list)
 
         guessed = get_guess(missing_letter + correct_guess)
-
+        # If the player has found all letters
         if guessed in random_word_from_list:
             correct_guess = correct_guess + guessed
-            # Check to see if the player has guessed all letters
             have_all_letters = True
             for i in range(len(random_word_from_list)):
                 if random_word_from_list[i] not in correct_guess:
