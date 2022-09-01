@@ -59,11 +59,12 @@ def display_the_board(missing_letter, correct_guess, random_word_from_list):
     print()
     print(f"{Fore.YELLOW}~-----------------------------------------~")
 
-    empty = "~" * len(random_word_from_list)
+    empty = "~" * len(random_word_from_list)  # create empty and build from
+    # length to ~
     # cover blanks ~ with correct letter
-    # for i in range(len(random_word_from_list)):
-    #     if random_word_from_list[i] in correct_guess:
-    #        empty = empty[:i] + random_word_from_list[i] + empty[i + 1:]
+#    for i in range(len(random_word_from_list)):
+#         if random_word_from_list[i] in correct_guess:
+#            empty = empty[:i] + random_word_from_list[i] + empty[i + 1:]
 
     # k_range and v_range, enumerate exact
     for k_r, v_r in enumerate(random_word_from_list):
@@ -254,8 +255,8 @@ def instructions():
     else call instructions again
     """
     clear()
-    # print(Fore.RESET)  # reset color
-    # delete_last_line()
+    print(Fore.RESET)  # reset color
+    delete_last_line()
     logo_display()
     game_rules()
     user_input = input(
