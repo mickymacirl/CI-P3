@@ -293,6 +293,63 @@ def see_instructions():
     logo_display()
     print("Welcome to Hangman, the Fruit Edition(TM)\n")
     game_title()
+    # alphabet = "abcdefghijklmnopqrstuvwxyz"
+    user_input = input("What is your name? ")
+    user_input = input((user_input).lower())
+    # f"{Fore.YELLOW}" + "Name is " + 
+        
+    # alphabet = "abcdefghijklmnopqrstuvwxyz"
+    if user_input.isalpha() is False:
+        # clear()
+        #logo_display()
+        #print(f"{Fore.YELLOW}~------------------------------~".center(80))
+        #check_guess = f"{Fore.RED}'" + user_input + "' is incorrect!"
+        #i = check_guess.center(79, " ")
+        #print(i)
+        print(f"{Fore.RED}Enter LETTERS only!".center(80))
+        #print(f"{Fore.YELLOW}~------------------------------~".center(80))
+        #instructions()
+    else:
+        print("test")
+
+#    elif user_input == " ":
+#        clear()
+#        main_game()
+#
+#    elif user_input == "q":
+#        clear()
+#        logo_display()
+#        exit_message()
+#        exit()
+
+#    else:
+#        clear()
+#        logo_display()
+#        print("test")
+        # print('Please choose either a Y or N')
+#        instructions_yn()
+        # print()
+        # time.sleep(3)
+#        see_instructions()
+
+    clear()
+    logo_display()
+    print("Game Loading.")
+    time.sleep(1)
+    print("Game Loading..")
+    time.sleep(1)
+    print("Game Loading...")
+    time.sleep(1)
+    print("Game Loading....")
+    time.sleep(1)
+    print("Game Loading.....")
+    time.sleep(1)
+    print("Game Loading")
+    time.sleep(1)
+    print("Game Loading..... Complete!")
+    print("Hello! " + user_input + ". The game is now loaded!")
+    # wait for 1 second
+    print("")
     user_input = input(
         f"{Fore.YELLOW}" + "Do you want to read instructions? Y, N or Q:\n"
     ).lower()
@@ -316,12 +373,12 @@ def see_instructions():
         # print('Please choose either a Y or N')
         instructions_yn()
         # print()
-        time.sleep(3)
+        # time.sleep(3)
         see_instructions()
 
 
 clear()
 see_instructions()
 
-if __name__ == "__main__":
-    main_game()
+# if __name__ == "__main__":
+#    main_game()
