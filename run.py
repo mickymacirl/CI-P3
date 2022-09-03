@@ -1,5 +1,6 @@
 """ this is """
 from os import system, name
+# import pwd
 import sys
 import random  # import random
 import time
@@ -90,11 +91,27 @@ def get_guess(already_guessed):
         game_pick()
         guessed = input()  # Get player guess
         guessed = guessed.lower()  # Force guessed lowercase
-
         clear()  # Clear Screen
         if len(guessed) != 1:
             clear()  # Clear Screen
             logo_display()  # Display Logo
+            print(f"{Fore.YELLOW}~-------------------------------~".center(80))
+            check_guess = f"{Fore.RED}'" + guessed + "' checking."
+            i = check_guess.center(79, " ")
+            print(i)
+            time.sleep(1)
+            delete_last_line()
+            print(f"{Fore.YELLOW}~-------------------------------~".center(80))
+            time.sleep(1)
+            delete_last_line()
+            clear()
+            logo_display()
+            print(f"{Fore.YELLOW}~-------------------------------~".center(80))
+            check_guess = f"{Fore.RED}'" + guessed + "' checking.."
+            i = check_guess.center(79, " ")
+            print(i)
+            time.sleep(1)
+            delete_last_line()
             print(f"{Fore.YELLOW}~-------------------------------~".center(80))
             check_guess = f"{Fore.RED}'" + guessed + "' isn't acceptable!"
             i = check_guess.center(79, " ")
@@ -291,26 +308,25 @@ def see_instructions():
     If not y, n, q display instructions"""
     clear()
     logo_display()
-    print("Welcome to Hangman, the Fruit Edition(TM)\n")
+    print(f"{Fore.YELLOW}Welcome to Hangman, the Fruit Edition(TM)\n")
     game_title()
     # alphabet = "abcdefghijklmnopqrstuvwxyz"
-    user_input = input("What is your name? ")
-    user_input = input((user_input).lower())
-    # f"{Fore.YELLOW}" + "Name is " + 
-        
+    # user_input = input("What is your name? ")
+    # user_input = input((user_input).lower())
+    # f"{Fore.YELLOW}" + "Name is " +
     # alphabet = "abcdefghijklmnopqrstuvwxyz"
-    if user_input.isalpha() is False:
+    # if user_input.isalpha() is False:
         # clear()
         #logo_display()
         #print(f"{Fore.YELLOW}~------------------------------~".center(80))
         #check_guess = f"{Fore.RED}'" + user_input + "' is incorrect!"
         #i = check_guess.center(79, " ")
         #print(i)
-        print(f"{Fore.RED}Enter LETTERS only!".center(80))
+    #    print(f"{Fore.RED}Enter LETTERS only!".center(80))
         #print(f"{Fore.YELLOW}~------------------------------~".center(80))
         #instructions()
-    else:
-        print("test")
+    # else:
+    #    print("test")
 
 #    elif user_input == " ":
 #        clear()
@@ -332,27 +348,71 @@ def see_instructions():
         # time.sleep(3)
 #        see_instructions()
 
-    clear()
-    logo_display()
+    # clear()
+    # logo_display()
+    print("Please wait")
     print("Game Loading.")
     time.sleep(1)
-    print("Game Loading..")
+    delete_last_line()
+    print(f"{Fore.RED}Drawing HANGMAN Board.")
+    time.sleep(0.5)
+    delete_last_line()
+    print(f"{Fore.RED}Drawing HANGMAN Board..")
     time.sleep(1)
+    delete_last_line()
+    print(f"{Fore.RED}Drawing HANGMAN Board...")
+    time.sleep(0.5)
+    delete_last_line()
+    print(f"{Fore.RED}Drawing HANGMAN Board....")
+    time.sleep(0.5)
+    delete_last_line()
+    print(f"{Fore.GREEN}Done!")
+    time.sleep(1)
+    delete_last_line()
+    print("Game Loading..")
+    time.sleep(0.5)
+    delete_last_line()
+    print(f"{Fore.RED}Calculating draw distance.")
+    time.sleep(1)
+    delete_last_line()
     print("Game Loading...")
     time.sleep(1)
+    delete_last_line()
+    print(f"{Fore.RED}Generating Random Fruit Word.")
+    time.sleep(1.5)
+    delete_last_line()
     print("Game Loading....")
-    time.sleep(1)
+    time.sleep(0.5)
+    delete_last_line()
+    print(f"{Fore.GREEN}Done!")
+    time.sleep(0.5)
+    delete_last_line()
     print("Game Loading.....")
-    time.sleep(1)
-    print("Game Loading")
-    time.sleep(1)
-    print("Game Loading..... Complete!")
-    print("Hello! " + user_input + ". The game is now loaded!")
+    time.sleep(0.5)
+    delete_last_line()
+    print("Game Loading......")
+    time.sleep(0.5)
+    delete_last_line()
+    print("Game Loading.......")
+    time.sleep(0.5)
+    delete_last_line()
+    print(f"{Fore.GREEN}Game Loading....... Complete!")
+    # user_name = os.environ.get('USERNAME')
+    # os.getlogin()
+    # print("Hello! " + user_name + ". The game is now loaded!")
     # wait for 1 second
     print("")
     user_input = input(
-        f"{Fore.YELLOW}" + "Do you want to read instructions? Y, N or Q:\n"
+        f"{Fore.YELLOW}" + "Do you want to read the instructions? Y, N or Q:\n"
     ).lower()
+    #if (len(user_input) != 1):
+    #    clear()
+    #    logo_display()
+        # print('Please choose either a Y or N')
+   #     instructions_yn()
+        # print()
+        # time.sleep(3)
+    #    see_instructions()
     if user_input == "y":
         clear()
         instructions()
